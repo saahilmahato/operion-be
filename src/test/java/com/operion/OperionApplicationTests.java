@@ -1,10 +1,10 @@
-package com.operionbe;
+package com.operion;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class OperionBeApplicationTests {
+class OperionApplicationTests {
 
     @Test
     void contextLoads() {
