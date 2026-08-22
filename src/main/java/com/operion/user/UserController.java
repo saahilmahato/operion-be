@@ -1,6 +1,7 @@
 package com.operion.user;
 
 import com.operion.user.dto.CreateUserRequest;
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,7 +18,7 @@ public class UserController {
     }
 
     @PostMapping("/register")
-    public User createUser(@RequestBody CreateUserRequest request) {
+    public User createUser(@Valid @RequestBody CreateUserRequest request) {
         return userService.createUser(request);
     }
 }
