@@ -1,32 +1,24 @@
 package com.operion.user;
 
 import com.operion.user.dto.CreateUserRequest;
+import com.operion.user.mapper.UserMapper;
+import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
+@RequiredArgsConstructor
 public class UserService {
 
     private final UserRepository userRepository;
+    private final UserMapper userMapper;
     private final PasswordEncoder passwordEncoder;
 
-    public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder) {
-        this.userRepository = userRepository;
-        this.passwordEncoder = passwordEncoder;
-    }
-
     public User createUser(CreateUserRequest request) {
-        User user = new User();
+        User user = userMapper.toEntity(request);
 
-        user.setFirstName(request.firstName());
-        user.setLastName(request.lastName());
-        user.setMiddleName(request.middleName());
-        user.setEmail(request.email());
-        user.setUsername(request.username());
         user.setRole(Role.USER);
-
-        String hashedPassword = passwordEncoder.encode(request.password());
-        user.setPassword(hashedPassword);
+        user.setPassword(passwordEncoder.encode(request.password()));
 
         return userRepository.save(user);
     }
