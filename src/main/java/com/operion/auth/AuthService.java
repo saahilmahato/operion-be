@@ -14,18 +14,19 @@ public class AuthService {
 
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
+    private final JwtService jwtService;
 
-    public User login(LoginRequest request) {
+    public String login(String username, String email, String password) {
 
-        User user = userRepository.findByUsernameOrEmail(request.identifier(), request.identifier())
+        User user = userRepository.findByUsernameOrEmail(username, email)
                 .orElseThrow(() ->
                         new BadCredentialsException("Invalid username or password")
                 );
 
-        if (!passwordEncoder.matches(request.password(), user.getPassword())) {
+        if (!passwordEncoder.matches(password, user.getPassword())) {
             throw new BadCredentialsException("Invalid username or password");
         }
 
-        return user;
+        return jwtService.generateToken(user);
     }
 }
