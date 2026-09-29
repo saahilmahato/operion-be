@@ -1,6 +1,5 @@
 package com.operion.auth;
 
-import com.operion.auth.dto.LoginRequest;
 import com.operion.user.User;
 import com.operion.user.UserRepository;
 import lombok.RequiredArgsConstructor;
