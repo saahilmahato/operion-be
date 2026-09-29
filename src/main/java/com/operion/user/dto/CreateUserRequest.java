@@ -19,4 +19,5 @@ public record CreateUserRequest(
 
         @NotBlank(message = "Password is required")
         String password
-) {}
+) {
+}
