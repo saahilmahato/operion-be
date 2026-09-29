@@ -20,6 +20,7 @@ repositories {
 
 val mapstructVersion = "1.6.3"
 val nimbusJoseJwtVersion = "10.10"
+val lombokMapstructBindingVersion = "0.2.0"
 
 dependencyManagement {
     dependencies {
@@ -53,6 +54,8 @@ dependencies {
 
     testCompileOnly("org.projectlombok:lombok")
     testAnnotationProcessor("org.projectlombok:lombok")
+
+    annotationProcessor("org.projectlombok:lombok-mapstruct-binding:$lombokMapstructBindingVersion")
 
     // Developer Tools
     developmentOnly("org.springframework.boot:spring-boot-devtools")

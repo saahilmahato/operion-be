@@ -2,19 +2,28 @@ package com.operion.auth;
 
 import com.operion.user.User;
 import com.operion.user.UserRepository;
-import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
-@RequiredArgsConstructor
 public class AuthService {
 
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
     private final JwtService jwtService;
-    private final String dummyHash = passwordEncoder.encode("timing-equalizer");
+    private final String dummyHash;
+
+    public AuthService(
+            UserRepository userRepository,
+            PasswordEncoder passwordEncoder,
+            JwtService jwtService
+    ) {
+        this.userRepository = userRepository;
+        this.passwordEncoder = passwordEncoder;
+        this.jwtService = jwtService;
+        this.dummyHash = passwordEncoder.encode("timing-equalizer");
+    }
 
     public String login(String username, String email, String password) {
 
