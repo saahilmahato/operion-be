@@ -14,15 +14,17 @@ public class AuthService {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
     private final JwtService jwtService;
+    private final String dummyHash = passwordEncoder.encode("timing-equalizer");
 
     public String login(String username, String email, String password) {
 
         User user = userRepository.findByUsernameOrEmail(username, email)
-                .orElseThrow(() ->
-                        new BadCredentialsException("Invalid username or password")
-                );
+                .orElse(null);
 
-        if (!passwordEncoder.matches(password, user.getPassword())) {
+        String hashToCheck = (user != null) ? user.getPassword() : dummyHash;
+        boolean matches = passwordEncoder.matches(password, hashToCheck);
+
+        if (user == null || !matches) {
             throw new BadCredentialsException("Invalid username or password");
         }
 

@@ -1,20 +1,30 @@
 package com.operion.auth;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseCookie;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
-@Service
+import java.time.Duration;
+
+@Component
+@RequiredArgsConstructor
 public class CookieService {
 
-    private static final String ACCESS_TOKEN_COOKIE_NAME = "access_token";
+    private final JwtProperties props;
 
-    public ResponseCookie createAccessTokenCookie(String token) {
-        return ResponseCookie.from(ACCESS_TOKEN_COOKIE_NAME, token)
+    public ResponseCookie create(String token) {
+        return base(token).maxAge(props.accessTokenTtl()).build();
+    }
+
+    public ResponseCookie clear() {
+        return base("").maxAge(Duration.ZERO).build();
+    }
+
+    public ResponseCookie.ResponseCookieBuilder base(String value) {
+        return ResponseCookie.from(props.cookieName(), value)
                 .httpOnly(true)
-                .secure(true)
-                .sameSite("Lax")
-                .path("/")
-                .maxAge(15 * 60)
-                .build();
+                .secure(props.cookieSecure())
+                .sameSite("Strict")
+                .path("/");
     }
 }

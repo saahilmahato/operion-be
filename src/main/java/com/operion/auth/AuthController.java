@@ -7,10 +7,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseCookie;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/auth")
@@ -26,10 +24,20 @@ public class AuthController {
     ) {
         String token = authService.login(request.identifier(), request.identifier(), request.password());
 
-        ResponseCookie cookie = cookieService.createAccessTokenCookie(token);
-
         return ResponseEntity.noContent()
-                .header(HttpHeaders.SET_COOKIE, cookie.toString())
+                .header(HttpHeaders.SET_COOKIE, cookieService.create(token).toString())
                 .build();
+    }
+
+    @PostMapping("/logout")
+    public ResponseEntity<Void> logout() {
+        return ResponseEntity.noContent()
+                .header(HttpHeaders.SET_COOKIE, cookieService.clear().toString())
+                .build();
+    }
+
+    @GetMapping("/me")
+    public AuthenticatedUser me(@AuthenticationPrincipal AuthenticatedUser user) {
+        return user;
     }
 }
