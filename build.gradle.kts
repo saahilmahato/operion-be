@@ -21,6 +21,7 @@ repositories {
 val mapstructVersion = "1.6.3"
 val nimbusJoseJwtVersion = "10.10"
 val lombokMapstructBindingVersion = "0.2.0"
+val bouncyCastleProviderVersion = "1.86"
 
 dependencyManagement {
     dependencies {
@@ -56,6 +57,9 @@ dependencies {
     testAnnotationProcessor("org.projectlombok:lombok")
 
     annotationProcessor("org.projectlombok:lombok-mapstruct-binding:$lombokMapstructBindingVersion")
+
+    // Bouncy Castle
+    implementation("org.bouncycastle:bcprov-jdk18on:$bouncyCastleProviderVersion")
 
     // Developer Tools
     developmentOnly("org.springframework.boot:spring-boot-devtools")
