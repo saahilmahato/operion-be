@@ -1,5 +1,6 @@
-package com.operion.auth;
+package com.operion.auth.service;
 
+import com.operion.auth.property.JwtProperties;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseCookie;
 import org.springframework.stereotype.Component;

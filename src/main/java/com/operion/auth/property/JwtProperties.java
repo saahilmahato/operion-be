@@ -1,4 +1,4 @@
-package com.operion.auth;
+package com.operion.auth.property;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 

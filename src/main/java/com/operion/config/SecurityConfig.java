@@ -1,9 +1,9 @@
 package com.operion.config;
 
-import com.operion.auth.CsrfCookieFilter;
-import com.operion.auth.JwtAuthenticationFilter;
-import com.operion.auth.JwtProperties;
-import com.operion.auth.JwtService;
+import com.operion.auth.filter.CsrfCookieFilter;
+import com.operion.auth.filter.JwtAuthenticationFilter;
+import com.operion.auth.property.JwtProperties;
+import com.operion.auth.service.JwtService;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

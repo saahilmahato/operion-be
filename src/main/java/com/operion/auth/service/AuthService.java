@@ -1,4 +1,4 @@
-package com.operion.auth;
+package com.operion.auth.service;
 
 import com.operion.user.User;
 import com.operion.user.UserRepository;

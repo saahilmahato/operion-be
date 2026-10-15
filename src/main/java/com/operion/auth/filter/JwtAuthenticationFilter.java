@@ -1,6 +1,9 @@
-package com.operion.auth;
+package com.operion.auth.filter;
 
 import com.nimbusds.jwt.JWTClaimsSet;
+import com.operion.auth.entity.AuthenticatedUser;
+import com.operion.auth.property.JwtProperties;
+import com.operion.auth.service.JwtService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.Cookie;

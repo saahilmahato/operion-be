@@ -1,4 +1,4 @@
-package com.operion.auth;
+package com.operion.auth.entity;
 
 public record AuthenticatedUser(
         Long id,

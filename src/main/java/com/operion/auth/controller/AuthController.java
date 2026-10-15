@@ -1,6 +1,9 @@
-package com.operion.auth;
+package com.operion.auth.controller;
 
+import com.operion.auth.service.AuthService;
+import com.operion.auth.service.CookieService;
 import com.operion.auth.dto.LoginRequest;
+import com.operion.auth.entity.AuthenticatedUser;
 import com.operion.user.User;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
