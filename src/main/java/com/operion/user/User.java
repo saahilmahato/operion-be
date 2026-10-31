@@ -23,8 +23,14 @@ public class User {
     @Column
     private String middleName;
 
+    @Column(nullable = false)
+    private String address;
+
     @Column(nullable = false, unique = true)
     private String email;
+
+    @Column(nullable = false, unique = true)
+    private String phoneNumber;
 
     @Column(nullable = false, unique = true)
     private String username;
