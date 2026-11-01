@@ -21,10 +21,10 @@ public class UserController {
 
     @PostMapping("/create")
     public ResponseEntity<Map<String, String>> createUser(@Valid @RequestBody CreateUserRequest request) {
-        userService.createUser(request);
+        User user = userService.createUser(request);
 
         return ResponseEntity
                 .status(HttpStatus.CREATED)
-                .body(Map.of("message", "User create successfully"));
+                .body(Map.of("message", "User %s create successfully".formatted(user.getUsername())));
     }
 }
