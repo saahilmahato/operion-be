@@ -20,6 +20,10 @@ public record CreateUserRequest(
         String email,
 
         @NotBlank(message = "Phone number is required")
+        @Pattern(
+                regexp = "^\\+[1-9]\\d{6,14}$",
+                message = "Phone number must be in international format"
+        )
         String phoneNumber,
 
         @NotBlank(message = "Username is required")
