@@ -1,6 +1,8 @@
 package com.operion.user;
 
 import com.operion.user.dto.CreateUserRequest;
+import com.operion.user.entity.Role;
+import com.operion.user.entity.User;
 import com.operion.user.mapper.UserMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;

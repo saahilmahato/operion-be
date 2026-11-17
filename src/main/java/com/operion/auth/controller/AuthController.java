@@ -4,7 +4,7 @@ import com.operion.auth.service.AuthService;
 import com.operion.auth.service.CookieService;
 import com.operion.auth.dto.LoginRequest;
 import com.operion.auth.entity.AuthenticatedUser;
-import com.operion.user.User;
+import com.operion.user.entity.User;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpHeaders;

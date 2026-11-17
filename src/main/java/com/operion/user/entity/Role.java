@@ -1,4 +1,4 @@
-package com.operion.user;
+package com.operion.user.entity;
 
 public enum Role {
     USER,

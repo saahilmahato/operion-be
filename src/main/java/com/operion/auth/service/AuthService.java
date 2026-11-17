@@ -1,6 +1,6 @@
 package com.operion.auth.service;
 
-import com.operion.user.User;
+import com.operion.user.entity.User;
 import com.operion.user.UserRepository;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.crypto.password.PasswordEncoder;

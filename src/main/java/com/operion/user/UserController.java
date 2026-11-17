@@ -1,6 +1,7 @@
 package com.operion.user;
 
 import com.operion.user.dto.CreateUserRequest;
+import com.operion.user.entity.User;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;

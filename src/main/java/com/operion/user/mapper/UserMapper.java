@@ -1,6 +1,6 @@
 package com.operion.user.mapper;
 
-import com.operion.user.User;
+import com.operion.user.entity.User;
 import com.operion.user.dto.CreateUserRequest;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;

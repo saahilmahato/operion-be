@@ -1,5 +1,6 @@
 package com.operion.user;
 
+import com.operion.user.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;
