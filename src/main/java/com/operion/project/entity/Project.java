@@ -1,10 +1,13 @@
 package com.operion.project.entity;
 
+import com.operion.user.entity.User;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.time.Instant;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "projects")
@@ -25,6 +28,21 @@ public class Project {
     @Enumerated(EnumType.STRING)
     @Column(nullable = false, length = 30)
     private ProjectStatus status = ProjectStatus.ACTIVE;
+
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "owner_id", nullable = false)
+    private User owner;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "manager_id")
+    private User manager;
+
+    @OneToMany(
+            mappedBy = "project",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true
+    )
+    private List<ProjectMember> teamMembers = new ArrayList<>();
 
     @Column(nullable = false, updatable = false)
     private Instant createdAt;
